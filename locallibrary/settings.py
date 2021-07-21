@@ -25,12 +25,12 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-#DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+# DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 
 
-ALLOWED_HOSTS = ['library-name.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    }    
 }
 
 
@@ -124,14 +124,13 @@ USE_L10N = True
 USE_TZ = True
 
 
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-# The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -148,7 +147,3 @@ LOGIN_REDIRECT_URL = '/catalog/'
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
