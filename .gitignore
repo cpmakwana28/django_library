@@ -133,3 +133,7 @@ dmypy.json
 
 # Database
 *.sqlite3
+
+#1 heroku git:remote --app=library-name ---used to add git app directory to heroku remote server 
+#2 heroku buildpacks:add heroku/python
+#3 git push heroku main
