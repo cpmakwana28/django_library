@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['library-name.herokuapp.com','127.0.0.1']
 
 import django
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'catalog.apps.CatalogConfig',
     'django.contrib.admin',
     'django.contrib.auth', #Core authentication framework and its default models.
@@ -131,7 +132,9 @@ STATIC_URL = '/static/'
 
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT =  'staticfiles'
+STATIC_ROOT =  os.path.join(BASE_DIR,"staticfiles")
+
+# STATICFILES_DIRS =['catalog/',]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
